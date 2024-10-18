@@ -1,1 +1,12 @@
-<p>hike-list works!</p>
+<h1>Teljesítménytúrák 2024 október</h1>
+<div class="challengesDiv">
+  @for (item of challenges; track $index) {
+    <div class="mainDiv">
+      <img [src]="item.image" [alt]="item.name">
+      <div class="dateDiv">{{item.date}}</div>
+      <div class="nameDiv">{{item.name}}</div>
+      <div class="fromDiv"> <img class="mapMark" src="/images/mapmark.svg" alt=""> {{item.from}} </div>
+      <button class="detailBtn" (click)="detailsButton()">Részletek</button>
+    </div>
+  }
+</div>

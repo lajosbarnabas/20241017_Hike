@@ -7,6 +7,10 @@ import { ChallengeModel } from '../models/hike.model';
   styleUrl: './hike-list.component.css',
 })
 export class HikeListComponent {
+  detailsButton(challenges: ChallengeModel){
+    
+  }
+
   challenges: ChallengeModel[] = [
     {
       name: 'Írottkő - 50 / 35 / 20',
