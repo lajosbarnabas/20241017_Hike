@@ -6,7 +6,20 @@
       <div class="dateDiv">{{item.date}}</div>
       <div class="nameDiv">{{item.name}}</div>
       <div class="fromDiv"> <img class="mapMark" src="/images/mapmark.svg" alt=""> {{item.from}} </div>
-      <button class="detailBtn" (click)="detailsButton()">Részletek</button>
+      <div class="infoDiv">
+        @for (line of item.info; track $index) {
+          <p>{{line}}</p>
+        }
+      </div>
+      <div class="btnDiv">
+        <button (click)="selectedChallenge = item">Részletek</button>
+      </div>
     </div>
   }
 </div>
+
+<div class="fees">Az eddigi jelentkezések össz nevezési díja: {{sumFee}} Ft</div>
+
+@if(selectedChallenge){
+  <app-hike-item [challenge]="selectedChallenge" (selectionChanged)="recalculateFees()"></app-hike-item>
+}

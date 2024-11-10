@@ -1,1 +1,44 @@
-<p>hike-item works!</p>
+<div class="card">
+  <img [src]="challenge?.image">
+  <div class="date">{{challenge?.date}}</div>
+  <h3>{{challenge?.name}}</h3>
+  <div class="address">
+    <img src="images/mapmark.svg" alt="" class="mapmark">
+    <span>{{challenge?.from}}</span>
+  </div>
+  <div class="description">
+    @for (line of challenge?.info; track $index) {
+      <p>{{line}}</p>
+    }
+  </div>
+  <div class="distances">
+    @for (distance of challenge?.distances; track $index) {
+      <div class="distance">
+        <h4>{{distance.name}}</h4>
+        <table>
+          <tr>
+            <td>Nevezési díj</td>
+            <td>{{distance.fee}}</td>
+            <td>Távolság:</td>
+            <td>{{distance.distance}}</td>
+          </tr>
+          <tr>
+            <td>Szintidő:</td>
+            <td>{{distance.maxtime}}</td>
+            <td>Szint:</td>
+            <td>{{distance.level}}</td>
+          </tr>
+        </table>
+
+        <div class="apply">
+          @if (distance.applied) {
+              <button (click)="apply(distance, false)">Jelentkezés visszavonása</button>
+          }
+          @else {
+              <button (click)="apply(distance, true)">Jelentkezem</button>
+          }
+          </div>
+      </div>
+    }
+  </div>
+</div>

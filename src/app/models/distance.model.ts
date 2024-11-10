@@ -4,4 +4,5 @@ export interface DistanceModel {
   fee: number;
   level: number;
   maxtime: number;
+  applied?: boolean;
 }

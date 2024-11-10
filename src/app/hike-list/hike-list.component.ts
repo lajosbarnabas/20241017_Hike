@@ -8,7 +8,7 @@ import { ChallengeModel } from '../models/hike.model';
 })
 export class HikeListComponent {
   detailsButton(challenges: ChallengeModel){
-    
+
   }
 
   challenges: ChallengeModel[] = [
@@ -366,4 +366,18 @@ export class HikeListComponent {
       ],
     },
   ];
+
+  sumFee = 0;
+
+  selectedChallenge: ChallengeModel | undefined;
+
+  recalculateFees(): void{
+    let sum = 0;
+    this.challenges.forEach(c => c.distances.forEach(d =>{
+      if(d.applied){
+        sum += d.fee;
+      }
+    }));
+    this.sumFee = sum;
+  }
 }
